@@ -1,0 +1,19 @@
+{
+  "name": "bolhadev",
+  "license": "MIT",
+  "version": "0.1.2",
+  "description": "Listagem de tuítes relacionados à bolha dev atualizados em tempo real",
+  "author": "Natan Santos",
+  "scripts": {
+    "dev": "nodemon ./index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "morgan": "^1.10.0",
+    "socket.io": "^4.4.1",
+    "twit": "^2.2.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
