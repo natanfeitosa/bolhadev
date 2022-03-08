@@ -51,6 +51,8 @@ const variados = [
   'frontend',
   'backend',
   'vscode',
+  'webmaster',
+  'fullstack'
 ]
 
 exports.keywords = [].concat(

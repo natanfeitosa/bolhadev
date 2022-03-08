@@ -1,3 +1,4 @@
+require('dotenv').config()
 const Twit = require('twit');
 const { keywords } = require('./configs')
 
