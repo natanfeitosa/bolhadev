@@ -5,7 +5,8 @@
   "description": "Listagem de tuítes relacionados à bolha dev atualizados em tempo real",
   "author": "Natan Santos",
   "scripts": {
-    "dev": "nodemon ./index.js"
+    "dev": "nodemon ./index.js",
+    "start": "node ./index.js"
   },
   "dependencies": {
     "express": "^4.17.3",
