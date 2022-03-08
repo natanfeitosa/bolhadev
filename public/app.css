@@ -132,6 +132,16 @@ a {
   padding-left: 0.2rem;
 }
 
+.post .body {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.post .body * {
+  white-space: inherit;
+  word-wrap: inherit;
+}
+
 .link:hover {
   text-decoration: underline;
 }

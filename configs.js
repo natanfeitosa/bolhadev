@@ -7,9 +7,9 @@ const bancos = [
 
 const linguagens = [
   'javascript',
-  'js',
+  // 'js',
   'typescript',
-  'ts',
+  // 'ts',
   'python',
   'html5',
   'css3',
@@ -50,6 +50,7 @@ const variados = [
   'gitpod',
   'frontend',
   'backend',
+  'vscode',
 ]
 
 exports.keywords = [].concat(

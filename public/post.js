@@ -2,11 +2,11 @@ const re = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?
 
 const createLink = (l, t) => `<a class="-blue link" target="_blank" href="${l.trim()}">${t}</a>`
 
-const parse = t => t.replace(/\n/gm, '<br>').replace(/((\#|\@)(?:[^\x00-\x7F]|\w)+)/g, m => {
+const parse = t => `<span style="font: inherit">${t.replace(/\n/gm, '<br>').replace(/((\#|\@)(?:[^\x00-\x7F]|\w)+)/g, m => {
   const base = 'https://twitter.com/'
   const l = `${m[0] == '#' ? 'hashtag/' : ''}${m.substring(1)}`
   return createLink(base+l, m)
-}).replace(re, m => new RegExp('https://twitter.com/').test(m) ? m : createLink(m, m))
+}).replace(re, m => new RegExp('https://twitter.com/').test(m) ? m : createLink(m, m))}</span>`
 
 const parseDate = d => {
   d = new Date(d)
