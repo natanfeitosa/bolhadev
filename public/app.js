@@ -25,14 +25,12 @@ const App = {
     }
   },
   template: `
-  <div class="container">
     <div class="header">
       <h2 class="title">Últimos posts da bolhadev</h2>
 	  </div>
 	  <div class="posts">
       <Tweet v-for="(item, index) in tweets" :key="index" :tweet="item"/>
     </div>
-  </div>
   `
 };
 

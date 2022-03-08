@@ -2,6 +2,7 @@ const Twit = require('twit');
 const { keywords } = require('./configs')
 
 const getTweetObject = tweet => {
+  // console.log({tweet})
   let tweetText = (tweet.extended_tweet) ? tweet.extended_tweet.full_text : tweet.text;
 
   // check for retweets
@@ -14,7 +15,7 @@ const getTweetObject = tweet => {
   }
 
   const TweetObject = {
-    created_at: tweet.created_at,
+    created_at: tweet.timestamp_ms,
     id: tweet.id_str,
     text: tweetText,
     user: {

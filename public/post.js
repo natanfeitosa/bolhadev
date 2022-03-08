@@ -8,6 +8,32 @@ const parse = t => t.replace(/\n/gm, '<br>').replace(/((\#|\@)(?:[^\x00-\x7F]|\w
   return createLink(base+l, m)
 }).replace(re, m => new RegExp('https://twitter.com/').test(m) ? m : createLink(m, m))
 
+const parseDate = d => {
+  d = new Date(d)
+  const _d = Math.round(+d / 1000)
+  const now = Math.round(+new Date(Date.now()) / 1000)
+
+  if ((now - _d) < 0) {
+    throw new Error('Future date')
+  }
+
+  const MONTHS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
+
+  if ((now - _d) >= 24 * 60 * 60) {
+    return `${d.getDate()} de ${MONTHS[d.getMonth()]}`
+  }
+
+  if ((now - _d) >= 60 * 60) {
+    return Math.round((now - _d) / (60 * 60)) + ' h'
+  }
+
+  if ((now - _d) >= 60) {
+    return Math.round((now - _d) / 60) + ' min'
+  }
+
+  return Math.round((now - _d) % 60) + ' s'
+}
+
 const Tweet = {
   props: ['tweet'],
   computed: {
@@ -16,11 +42,14 @@ const Tweet = {
     },
     linkTweet() {
       return `https://twitter.com/${this.tweet.user.username}/status/${this.tweet.id}`
+    },
+    created_at() {
+      return parseDate(parseInt(this.tweet.created_at))
     }
   },
   template: `
 		<a class="post" :href="linkTweet" target="_blank">
-			<div class="left">
+      <div class="left">
 				<div class="avatar-box">
 					<a href="">
 						<img class="avatar" :src="tweet.user.avatar" >
@@ -33,12 +62,12 @@ const Tweet = {
 						<span class="name">{{ tweet.user.name }}</span>
 						<span class="username">{{ tweet.user.username }}</span>
 					</a>
-					<small class="sub">
+					<span class="sub">
 						<span>·</span>
 						<a :href="linkTweet" target="_blank" class="hours link">
-							<time datetime="2022-03-06T03:57:26.000Z">2h</time>
+							<time>{{ created_at }}</time>
 						</a>
-					</small>
+					</span>
 				</div>
 				<div class="body" v-html="textTweet"></div>
 				<div class="footer">
