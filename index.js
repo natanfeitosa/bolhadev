@@ -5,7 +5,7 @@ const {
 
 require('./tweet').initiate(io)
 
-const PORT = 3000
+let port = process.env.PORT || 3000
 server.listen(PORT, () => {
   console.log('listing on port:', PORT)
 })
