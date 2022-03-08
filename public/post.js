@@ -60,7 +60,7 @@ const Tweet = {
 				<div class="header">
 					<a :href="'https://twitter.com/' + tweet.user.username" target="_blank">
 						<span class="name">{{ tweet.user.name }}</span>
-						<span class="username">{{ tweet.user.username }}</span>
+						<span class="username">@{{ tweet.user.username }}</span>
 					</a>
 					<span class="sub">
 						<span>·</span>
