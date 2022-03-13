@@ -30,7 +30,8 @@ const bibliotecas = [
 ]
 
 const frameworks = [
-  'angular'
+  'angular',
+  'djangoproject',
 ]
 
 const variados = [
